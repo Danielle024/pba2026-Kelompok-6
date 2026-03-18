@@ -8,11 +8,11 @@ Proyek ini berfokus pada **perbandingan performa Machine Learning (ML) dan Deep 
 
 ## 👥 Anggota Kelompok
 
-| Nama                     | NIM        | GitHub |
-|--------------------------|------------|--------|
-| Abit Ahmad Oktarian      | 122450042  | -      |
-| Fadhil Fitra Wijaya      | 122450082  | -      |
-| Dhafin Razaqa            | 122450133  | -      |
+| Nama                     | NIM        | GitHub           |
+|--------------------------|------------|------------------|
+| Abit Ahmad Oktarian      | 122450042  | Danielle024      |
+| Fadhil Fitra Wijaya      | 122450082  | -                |
+| Dhafin Razaqa            | 122450133  | -                |
 
 ---
 
