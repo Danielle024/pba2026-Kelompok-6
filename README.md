@@ -11,7 +11,7 @@ Proyek ini berfokus pada **perbandingan performa Machine Learning (ML) dan Deep 
 | Nama                     | NIM        | GitHub           |
 |--------------------------|------------|------------------|
 | Abit Ahmad Oktarian      | 122450042  | Danielle024      |
-| Fadhil Fitra Wijaya      | 122450082  | -                |
+| Fadhil Fitra Wijaya      | 122450082  | epwefwe          |
 | Dhafin Razaqa            | 122450133  | -                |
 
 ---
@@ -51,5 +51,17 @@ Dalam proyek ini, dataset tidak digunakan secara keseluruhan. Dilakukan proses f
 - Counter-Strike: Global Offensive (CS:GO)
 
 Pemilihan kedua game ini didasarkan pada jumlah ulasan yang besar serta variasi opini pengguna yang tinggi, sehingga memberikan data yang representatif untuk membandingkan performa model Machine Learning dan Deep Learning dalam tugas klasifikasi sentimen. Sebelum digunakan dalam proses pemodelan, dataset akan melalui tahap preprocessing untuk membersihkan teks dan mempersiapkan data agar dapat diproses secara optimal oleh model.
+
+### 🔍 Karakteristik Teks Ulasan Steam
+
+Ulasan pada platform Steam memiliki karakteristik unik yang menjadi tantangan tersendiri dalam NLP:
+
+| Karakteristik | Keterangan |
+|---|---|
+| 🗣️ Bahasa informal & gaul | Banyak singkatan, slang gaming, dan bahasa tidak baku |
+| 🌐 Mixed language | Beberapa ulasan mencampur berbagai bahasa |
+| 😏 Sarkasme & ironi | Ulasan negatif terkadang ditulis dengan nada positif |
+| 📏 Variatif dalam panjang | Dari satu kata hingga beberapa paragraf |
+| 🎮 Domain-specific vocabulary | Istilah khusus gaming: *nerf*, *buff*, *meta*, *AFK*, *feed*, dll. |
 
 ---
