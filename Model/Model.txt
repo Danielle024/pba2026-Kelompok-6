@@ -1,0 +1,17 @@
+## 📁 Penjelasan Struktur: Folder `models`
+
+Dalam arsitektur Machine Learning yang baik, kode program (`.py`) dan hasil pelatihan AI harus dipisahkan. Di sinilah folder **`models`** berperan penting.
+
+Folder `models` adalah tempat penyimpanan eksklusif untuk **"otak AI"** yang sudah selesai dilatih dan difinalisasi oleh algoritma (dalam hal ini, PyCaret). 
+
+### 🧠 Apa Isi dari Folder Ini?
+Isi utama dari folder ini adalah file berekstensi **`.pkl` (Pickle)**, seperti `nlp_pipeline_final.pkl`. 
+
+File Pickle bukanlah file teks biasa yang bisa dibaca manusia. File ini adalah bentuk biner (serialisasi) yang membungkus dua hal sekaligus:
+1. **Pipeline Preprocessing:** Aturan matematis bagaimana AI mengubah teks menjadi angka (misalnya menggunakan *TF-IDF*).
+2. **Algoritma Cerdas:** Bobot dan logika dari model terbaik (misal: *LightGBM*) yang sudah belajar membedakan review "Positif" dan "Negatif" dari 30.000 data Steam.
+
+### ⚙️ Mengapa Harus Disimpan di Folder Terpisah?
+1. **Menghindari Latihan Ulang (Efisiensi):** Proses pelatihan (`train.py`) memakan waktu berjam-jam dan menguras RAM. Dengan menyimpan hasilnya di folder `models`, aplikasi antarmuka seperti `app.py` (Gradio) hanya perlu **memuat (*load*)** file `.pkl` tersebut dalam hitungan detik tanpa perlu melatih AI dari nol lagi.
+2. **Manajemen Ukuran File:** File model AI bisa membengkak ukurannya (puluhan hingga ratusan Megabyte). Memisahkannya di folder `models` memudahkan kita untuk mengecualikannya dari GitHub menggunakan `.gitignore` agar tidak membebani repositori kode.
+3. **Kemudahan Deployment:** Saat kita ingin mengunggah aplikasi ke server (seperti Hugging Face atau AWS), kita cukup membawa file `app.py` dan memanggil file `.pkl` dari folder ini. Model ini siap dipakai (Plug-and-Play) di mana saja.
