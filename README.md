@@ -73,6 +73,35 @@ Ulasan pada platform Steam memiliki karakteristik unik yang menjadi tantangan te
 | 🎮 Domain-specific vocabulary | Istilah khusus gaming: *nerf*, *buff*, *meta*, *AFK*, *feed*, dll. |
 
 ---
+## 🤖 Model yang Digunakan
+ 
+### 🔬 Machine Learning (PyCaret)
+ 
+Pendekatan ML menggunakan **PyCaret** sebagai framework AutoML untuk membandingkan performa beberapa algoritma secara otomatis. Feature extraction teks dilakukan sebelum pelatihan menggunakan metode seperti TF-IDF atau Bag of Words.
+ 
+Berikut adalah hasil perbandingan seluruh model menggunakan `compare_models()` dari PyCaret, diurutkan berdasarkan **F1 Score** tertinggi:
+ 
+| Rank | Model | F1 | Kappa | MCC | TT (Sec) |
+|------|-------|----|-------|-----|----------|
+| 🥇 | **LightGBM** (`lightgbm`) | 0.9448 | 0.3172 | 0.3697 | 11.47 |
+| 🥈 | **Ridge Classifier** (`ridge`) | 0.9401 | 0.2360 | 0.3165 | 148.90 |
+| 🥉 | **Ada Boost** (`ada`) | 0.9392 | 0.2623 | 0.2910 | 108.45 |
+| 4 | Gradient Boosting (`gbc`) | 0.9365 | 0.1830 | 0.2639 | 169.32 |
+| 5 | Logistic Regression (`lr`) | 0.9362 | 0.1712 | 0.2699 | 29.53 |
+
+> ✅ **Top 3 model terpilih:** LightGBM, Ridge Classifier, dan Ada Boost — dipilih berdasarkan F1 Score tertinggi dengan waktu training yang relatif efisien.
+ 
+---
+
+### 🧠 Deep Learning
+ 
+Pendekatan DL akan menggunakan arsitektur neural network untuk menangkap representasi semantik teks yang lebih dalam dibandingkan model ML klasik.
+ 
+| Model | Deskripsi |
+|-------|-----------|
+| *(akan diperbarui)* | Model DL belum ditentukan — akan diisi setelah eksplorasi arsitektur selesai. |
+ 
+---
  
 ## 🔗 Link Demo & Deployment
  
