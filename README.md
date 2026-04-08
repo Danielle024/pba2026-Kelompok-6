@@ -107,5 +107,5 @@ Pendekatan DL akan menggunakan arsitektur neural network untuk menangkap represe
  
 | Model | Platform | Link |
 |-------|----------|------|
-| sentimen model | Hugging Face Spaces | Bitlancka/GameSteam-Review-Sentiment|
+| sentimen model | Hugging Face Spaces | [Bitlancka/GameSteam-Review-Sentiment](https://huggingface.co/spaces/Bitlancka/GameSteam-Review-Sentiment)|
 ---
