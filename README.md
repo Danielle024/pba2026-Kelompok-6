@@ -18,7 +18,7 @@ Proyek ini berfokus pada **perbandingan performa Machine Learning (ML) dan Deep 
 
 ## 📌 Deskripsi Proyek
  
-Proyek ini bertujuan untuk melakukan **analisis sentimen** terhadap ulasan pengguna pada platform Steam. Berdasarkan hasil eksplorasi data awal (EDA), 30.000 baris pertama dataset mencakup ulasan dari game-game berikut:
+Proyek ini bertujuan untuk melakukan **analisis sentimen** terhadap ulasan pengguna pada platform Steam. Berdasarkan hasil eksplorasi data awal (EDA) dan batasan memori komputasi, model dilatih menggunakan **30.000 baris pertama** dataset yang mencakup ulasan dari game-game berikut:
  
 - 🎯 Counter-Strike
 - 🪆 Rag Doll Kung Fu
@@ -32,54 +32,54 @@ Proyek ini bertujuan untuk melakukan **analisis sentimen** terhadap ulasan pengg
 - 🤖 Prototype
 - 🪖 Call of Duty: Modern Warfare 2
  
-Model akan mengklasifikasikan teks review menjadi:
- 
-- ✅ **Positive (Recommended)**
-- ❌ **Negative (Not Recommended)**
+Model dikembangkan untuk mengklasifikasikan teks review ke dalam dua kelas utama:
+- ✅ **Positive (Recommended)** -> Dilambangkan dengan label `1`
+- ❌ **Negative (Not Recommended)** -> Dilambangkan dengan label `-1`
 
 ---
 
-## 📊 Dataset
+## 📊 Dataset & Preprocessing
 
-## 📁 Deskripsi Dataset
+### 📁 Deskripsi Dataset
+Dataset yang digunakan berasal dari platform Kaggle dan dapat diakses melalui tautan berikut:  
+🔗 [Steam Reviews Dataset (AndrewMVD)](https://www.kaggle.com/datasets/andrewmvd/steam-reviews)
 
-Dataset yang digunakan dalam proyek ini berasal dari platform Kaggle dan dapat diakses melalui tautan berikut:
-
-🔗 https://www.kaggle.com/datasets/andrewmvd/steam-reviews
-
-Dataset ini berisi kumpulan ulasan (review) pengguna dari platform Steam dengan jumlah data yang sangat besar (jutaan entri). Dataset ini sangat cocok digunakan untuk tugas analisis sentimen karena mengandung opini pengguna dalam bentuk teks yang beragam. Setiap entri dalam dataset merepresentasikan satu ulasan pengguna yang terdiri dari teks review serta label sentimen yang menunjukkan apakah pengguna merekomendasikan game tersebut atau tidak. Label ini digunakan sebagai acuan (ground truth) dalam proses pelatihan model klasifikasi.
-
-### 🔑 Atribut Utama:
-- `review_text`: berisi teks ulasan yang ditulis oleh pengguna
-- `recommended`: label sentimen dalam bentuk boolean (True = positif, False = negatif)
-- metadata tambahan, seperti:
-  - `playtime`: lama waktu bermain pengguna
-  - `helpful_votes`: jumlah pengguna lain yang menilai review tersebut membantu
- 
-Dalam proyek ini, dilakukan eksplorasi awal (EDA) terhadap 30.000 baris pertama dataset untuk memahami distribusi game dan karakteristik data. Hasil EDA menunjukkan bahwa data mencakup berbagai judul game dari berbagai genre, mulai dari FPS, adventure, hingga casual. Data kemudian akan difilter sesuai kebutuhan analisis lebih lanjut.
- 
-Sebelum digunakan dalam proses pemodelan, dataset akan melalui tahap preprocessing untuk membersihkan teks dan mempersiapkan data agar dapat diproses secara optimal oleh model.
+Setiap entri dalam dataset merepresentasikan satu ulasan pengguna yang terdiri dari teks review serta label sentimen yang menunjukkan apakah pengguna merekomendasikan game tersebut atau tidak. Label ini digunakan sebagai acuan (*ground truth*) dalam proses pelatihan model klasifikasi.
 
 ### 🔍 Karakteristik Teks Ulasan Steam
-
 Ulasan pada platform Steam memiliki karakteristik unik yang menjadi tantangan tersendiri dalam NLP:
 
 | Karakteristik | Keterangan |
 |---|---|
-| 🗣️ Bahasa informal & gaul | Banyak singkatan, slang gaming, dan bahasa tidak baku |
-| 🌐 Mixed language | Beberapa ulasan mencampur berbagai bahasa |
-| 😏 Sarkasme & ironi | Ulasan negatif terkadang ditulis dengan nada positif |
-| 📏 Variatif dalam panjang | Dari satu kata hingga beberapa paragraf |
-| 🎮 Domain-specific vocabulary | Istilah khusus gaming: *nerf*, *buff*, *meta*, *AFK*, *feed*, dll. |
+| 🗣️ **Bahasa informal & gaul** | Banyak singkatan, slang gaming, dan bahasa tidak baku. |
+| 🌐 **Mixed language** | Beberapa ulasan mencampur berbagai bahasa. |
+| 😏 **Sarkasme & ironi** | Ulasan negatif terkadang ditulis dengan nada positif. |
+| 📏 **Variatif dalam panjang** | Dari satu kata hingga beberapa paragraf. |
+| 🎮 **Domain-specific vocabulary**| Istilah khusus gaming: *nerf*, *buff*, *meta*, *AFK*, *feed*, dll. |
+
+### 🛠️ Pipeline Preprocessing Teks
+Untuk mengatasi tantangan teks Steam yang kotor dan tidak terstruktur, kami membangun modul `preprocess.py` dengan *pipeline* pembersihan khusus sebagai berikut:
+1. **Lowercasing:** Mengubah seluruh teks menjadi huruf kecil.
+2. **URL & Mention Removal:** Menghapus tautan `http/https` dan *mention* `@`.
+3. **Leetspeak Normalization:** Mengembalikan angka yang dijadikan huruf (contoh: `g0bl0k` menjadi `goblok`).
+4. **Slang Expansion:** Mengubah kata gaul/singkatan gaming menjadi kata baku menggunakan kamus khusus (`SLANG_DICT`).
+5. **Non-Alphabet Removal:** Membuang tanda baca, emoji, dan simbol (menyisakan huruf `a-z` dan spasi).
+6. **Whitespace Stripping:** Merapikan spasi yang berlebih.
 
 ---
+
 ## 🤖 Model yang Digunakan
  
 ### 🔬 Machine Learning (PyCaret)
+Pendekatan ML dikembangkan menggunakan **PyCaret**, sebuah framework AutoML untuk membandingkan performa berbagai algoritma secara otomatis. 
+
+**Konfigurasi Eksperimen (Setup):**
+- **Text Embedding:** TF-IDF (*Term Frequency-Inverse Document Frequency*)
+- **Sampling:** 30.000 sampel data.
+- **Train/Test Split:** 80% Data Latih, 20% Data Uji.
+- **Cross-Validation:** Stratified K-Fold (Fold = 3)
  
-Pendekatan ML menggunakan **PyCaret** sebagai framework AutoML untuk membandingkan performa beberapa algoritma secara otomatis. Feature extraction teks dilakukan sebelum pelatihan menggunakan metode seperti TF-IDF atau Bag of Words.
- 
-Berikut adalah hasil perbandingan seluruh model menggunakan `compare_models()` dari PyCaret, diurutkan berdasarkan **F1 Score** tertinggi:
+Berikut adalah hasil perbandingan model menggunakan fungsi `compare_models()`, diurutkan berdasarkan **F1 Score** tertinggi:
  
 | Rank | Model | F1 | Kappa | MCC | TT (Sec) |
 |------|-------|----|-------|-----|----------|
@@ -89,26 +89,16 @@ Berikut adalah hasil perbandingan seluruh model menggunakan `compare_models()` d
 | 4 | Gradient Boosting (`gbc`) | 0.9365 | 0.1830 | 0.2639 | 169.32 |
 | 5 | Logistic Regression (`lr`) | 0.9362 | 0.1712 | 0.2699 | 29.53 |
 
-> ✅ **Top 3 model terpilih:** LightGBM, Ridge Classifier, dan Ada Boost — dipilih berdasarkan F1 Score tertinggi dengan waktu training yang relatif efisien.
- 
----
-
-### 🧠 Deep Learning
- 
-Pendekatan DL akan menggunakan arsitektur neural network untuk menangkap representasi semantik teks yang lebih dalam dibandingkan model ML klasik.
- 
-| Model | Deskripsi |
-|-------|-----------|
-| *(akan diperbarui)* | Model DL belum ditentukan — akan diisi setelah eksplorasi arsitektur selesai. |
+> ✅ **Keputusan:** Model **LightGBM** dipilih untuk tahap *deployment* karena meraih F1 Score tertinggi (0.9448) dan memiliki waktu pelatihan (TT) paling efisien dibandingkan algoritma terbaik lainnya. Model diekspor dalam bentuk `.pkl`.
  
 ---
  
 ## 🔗 Link Demo & Deployment
+Model LightGBM terbaik telah berhasil di-*deploy* menjadi aplikasi web interaktif menggunakan antarmuka **Gradio** dengan kustomisasi tema visual ala *Steam Dark Mode*. Aplikasi ini berjalan secara *live* pada *environment* Python 3.10.
  
 | Model | Platform | Link |
 |-------|----------|------|
-| sentimen model | Hugging Face Spaces | [Bitlancka/GameSteam-Review-Sentiment](https://huggingface.co/spaces/Bitlancka/GameSteam-Review-Sentiment)|
----
+| **Sentimen Model (ML)** | Hugging Face Spaces | [🎮 Coba Demo AI di Sini! (Bitlancka/GameSteam-Review-Sentiment)](https://huggingface.co/spaces/Bitlancka/GameSteam-Review-Sentiment)|
 
-Beberapa bantuan asisten dari AI Gemini dan Copilot:
-https://drive.google.com/drive/folders/1kwjQTFWiDKAUz9QmkHJgf3FlqjfmkJXK?usp=sharing 
+---
+*Beberapa bantuan asisten dari AI Gemini dan Copilot:* 🔗 [Folder Dokumentasi AI (Google Drive)](https://drive.google.com/drive/folders/1kwjQTFWiDKAUz9QmkHJgf3FlqjfmkJXK?usp=sharing)
