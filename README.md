@@ -17,8 +17,6 @@ Proyek ini berfokus pada **perbandingan performa Machine Learning (ML) dan Deep 
 ---
 
 ## 📌 Deskripsi Proyek
-
-## 📌 Deskripsi Proyek
  
 Proyek ini bertujuan untuk melakukan **analisis sentimen** terhadap ulasan pengguna pada platform Steam. Berdasarkan hasil eksplorasi data awal (EDA), 30.000 baris pertama dataset mencakup ulasan dari game-game berikut:
  
