@@ -18,12 +18,24 @@ Proyek ini berfokus pada **perbandingan performa Machine Learning (ML) dan Deep 
 
 ## 📌 Deskripsi Proyek
 
-Proyek ini bertujuan untuk melakukan **analisis sentimen** terhadap ulasan pengguna pada platform Steam, khususnya untuk game:
-
-- 🎮 Dota 2  
-- 🎯 Counter-Strike: Global Offensive (CS:GO)
-
+## 📌 Deskripsi Proyek
+ 
+Proyek ini bertujuan untuk melakukan **analisis sentimen** terhadap ulasan pengguna pada platform Steam. Berdasarkan hasil eksplorasi data awal (EDA), 30.000 baris pertama dataset mencakup ulasan dari game-game berikut:
+ 
+- 🎯 Counter-Strike
+- 🪆 Rag Doll Kung Fu
+- 🏗️ Silo 2
+- 🪖 Call of Duty: World at War
+- 👑 King's Quest Collection
+- 🚀 Space Quest Collection
+- 🌌 Aces of the Galaxy
+- ⏱️ TimeShift
+- ⛳ 3D Ultra Minigolf Adventures Deluxe
+- 🤖 Prototype
+- 🪖 Call of Duty: Modern Warfare 2
+ 
 Model akan mengklasifikasikan teks review menjadi:
+ 
 - ✅ **Positive (Recommended)**
 - ❌ **Negative (Not Recommended)**
 
@@ -45,12 +57,10 @@ Dataset ini berisi kumpulan ulasan (review) pengguna dari platform Steam dengan 
 - metadata tambahan, seperti:
   - `playtime`: lama waktu bermain pengguna
   - `helpful_votes`: jumlah pengguna lain yang menilai review tersebut membantu
-
-Dalam proyek ini, dataset tidak digunakan secara keseluruhan. Dilakukan proses filtering untuk mengambil data yang lebih spesifik, yaitu ulasan dari dua game populer:
-- Dota 2
-- Counter-Strike: Global Offensive (CS:GO)
-
-Pemilihan kedua game ini didasarkan pada jumlah ulasan yang besar serta variasi opini pengguna yang tinggi, sehingga memberikan data yang representatif untuk membandingkan performa model Machine Learning dan Deep Learning dalam tugas klasifikasi sentimen. Sebelum digunakan dalam proses pemodelan, dataset akan melalui tahap preprocessing untuk membersihkan teks dan mempersiapkan data agar dapat diproses secara optimal oleh model.
+ 
+Dalam proyek ini, dilakukan eksplorasi awal (EDA) terhadap 30.000 baris pertama dataset untuk memahami distribusi game dan karakteristik data. Hasil EDA menunjukkan bahwa data mencakup berbagai judul game dari berbagai genre, mulai dari FPS, adventure, hingga casual. Data kemudian akan difilter sesuai kebutuhan analisis lebih lanjut.
+ 
+Sebelum digunakan dalam proses pemodelan, dataset akan melalui tahap preprocessing untuk membersihkan teks dan mempersiapkan data agar dapat diproses secara optimal oleh model.
 
 ### 🔍 Karakteristik Teks Ulasan Steam
 
@@ -63,5 +73,14 @@ Ulasan pada platform Steam memiliki karakteristik unik yang menjadi tantangan te
 | 😏 Sarkasme & ironi | Ulasan negatif terkadang ditulis dengan nada positif |
 | 📏 Variatif dalam panjang | Dari satu kata hingga beberapa paragraf |
 | 🎮 Domain-specific vocabulary | Istilah khusus gaming: *nerf*, *buff*, *meta*, *AFK*, *feed*, dll. |
+
+---
+ 
+## 🔗 Link Demo & Deployment
+ 
+| Model | Platform | Link |
+|-------|----------|------|
+| ML Model (PyCaret) | Hugging Face Spaces | *(akan diperbarui)* |
+| DL Model | Hugging Face Spaces | *(akan diperbarui)* |
 
 ---
