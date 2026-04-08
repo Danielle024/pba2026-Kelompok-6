@@ -1,0 +1,17 @@
+pycaret
+pandas
+kagglehub
+opendatasets
+nltk
+Sastrawi
+matplotlib
+seaborn
+ipykernel
+ipywidgets
+gradio
+pycaret
+pandas
+lightgbm
+scikit-learn==1.2.2
+pandas<2.2.0
+joblib==1.3.2
