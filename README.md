@@ -75,7 +75,7 @@ Pendekatan ML dikembangkan menggunakan **PyCaret**, sebuah framework AutoML untu
 
 **Konfigurasi Eksperimen (Setup):**
 - **Text Embedding:** TF-IDF (*Term Frequency-Inverse Document Frequency*)
-- **Sampling:** 30.000 sampel data.
+- **Sampling:** 30.000 sampel data. Disini kami hanya mengambil sebagian kecil data dikarenakan untuk total baris pada dataset kami mencapai 6.417.106
 - **Train/Test Split:** 80% Data Latih, 20% Data Uji.
 - **Cross-Validation:** Stratified K-Fold (Fold = 3)
  
