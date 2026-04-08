@@ -9,7 +9,7 @@ from preprocess import clean_text
 print("Memuat model NLP...")
 # PENTING: Jika jalankan di laptop (lokal), gunakan "models/nlp_pipeline_final"
 # Jika nanti di-upload ke Hugging Face (satu folder), ubah menjadi "nlp_pipeline_final"
-model = load_model("models/nlp_pipeline_final")
+model = load_model("nlp_pipeline_final")
 
 def predict_sentiment(teks_review):
     if not teks_review.strip():
