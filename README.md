@@ -94,7 +94,13 @@ Berikut adalah hasil perbandingan model menggunakan fungsi `compare_models()`, d
 ---
  
 ## 🔗 Link Demo & Deployment
-Model LightGBM terbaik telah berhasil di-*deploy* menjadi aplikasi web interaktif menggunakan antarmuka **Gradio** dengan kustomisasi tema visual ala *Steam Dark Mode*. Aplikasi ini berjalan secara *live* pada *environment* Python 3.10.
+### 🔬 Machine Learning (LightGBM)
+
+Model **LightGBM** terbaik telah berhasil di-*deploy* menjadi aplikasi web interaktif menggunakan antarmuka **Gradio** dengan kustomisasi tema visual ala *Steam Dark Mode*. Model ini memanfaatkan representasi teks berbasis **TF-IDF** dan dipilih karena memiliki performa terbaik berdasarkan evaluasi (F1 Score tertinggi) serta efisiensi waktu pelatihan. Aplikasi ini berjalan secara *live* pada *environment* Python 3.10.
+
+### 🤖 Deep Learning (BiLSTM + Attention)
+
+Model **Deep Learning (BiLSTM + Attention)** juga berhasil di-*deploy* sebagai aplikasi web interaktif menggunakan **Gradio**. Arsitektur ini dirancang untuk menangkap konteks urutan kata dalam teks serta memberikan bobot perhatian (*attention*) pada bagian kalimat yang paling relevan terhadap sentimen. Pendekatan ini memungkinkan model memahami nuansa bahasa yang lebih kompleks seperti konteks, ironi, dan pola kalimat. Aplikasi ini juga berjalan secara *live* pada *environment* Python 3.10.
  
 | Model | Platform | Link |
 |-------|----------|------|
