@@ -90,7 +90,54 @@ Berikut adalah hasil perbandingan model menggunakan fungsi `compare_models()`, d
 | 5 | Logistic Regression (`lr`) | 0.9362 | 0.1712 | 0.2699 | 29.53 |
 
 > ✅ **Keputusan:** Model **LightGBM** dipilih untuk tahap *deployment* karena meraih F1 Score tertinggi (0.9448) dan memiliki waktu pelatihan (TT) paling efisien dibandingkan algoritma terbaik lainnya. Model diekspor dalam bentuk `.pkl`.
- 
+
+---
+
+### 🧠 Deep Learning (PyTorch — BiLSTM + Attention)
+
+Pendekatan DL dikembangkan menggunakan **PyTorch** dengan arsitektur **BiLSTM + Attention Mechanism**. Arsitektur ini dipilih karena kemampuannya membaca konteks kalimat dari dua arah (*bidirectional*) sekaligus memberikan bobot perhatian pada bagian teks yang paling relevan terhadap sentimen.
+
+**Konfigurasi Model:**
+- **Arsitektur:** BiLSTM + Attention
+- **Total Parameter:** 4.929.027
+- **Embedding Dimension:** 128
+- **Hidden Dimension:** 256
+- **Split Data:** Train: 38.744 | Val: 4.843 | Test: 4.843
+- **Early Stopping:** Aktif
+
+**Proses Training per Epoch:**
+
+| Epoch | Loss | Accuracy | Val Loss | Val Time |
+|-------|------|----------|----------|----------|
+| 01 | 0.4763 | 0.7517 | 0.4004 | 406.3s |
+| 02 | 0.3705 | 0.8203 | 0.3584 | 438.0s |
+| 03 | 0.3140 | 0.8543 | 0.3501 | 608.1s |
+| 04 | 0.2706 | 0.8763 | 0.3438 | 1398.2s |
+| 05 | 0.2351 | 0.8945 | 0.3420 | 646.5s |
+| 06 | 0.1996 | 0.9105 | 0.4168 | 344.0s |
+| 07 | 0.1726 | 0.9245 | 0.4630 | 296.3s |
+| 08 | 0.1473 | 0.9373 | 0.5093 | 295.3s |
+
+> ⚠️ **Early stopping** diaktifkan pada **Epoch 8** karena *validation loss* mulai meningkat sejak epoch 6, mengindikasikan gejala *overfitting*.
+
+**Hasil Evaluasi pada Data Uji (Test Set):**
+
+| Kelas | Precision | Recall | F1-Score | Support |
+|-------|-----------|--------|----------|---------|
+| Negative | 0.49 | 0.90 | 0.63 | 776 |
+| Positive | 0.98 | 0.82 | 0.89 | 4067 |
+| **Accuracy** | | | **0.83** | **4843** |
+| Macro Avg | 0.73 | 0.86 | 0.76 | 4843 |
+| Weighted Avg | 0.90 | 0.83 | 0.85 | 4843 |
+
+**Analisis Hasil:**
+- Model mencapai **akurasi keseluruhan sebesar 83%** pada data uji.
+- Untuk kelas **Positive**, model menunjukkan performa sangat baik dengan precision 0.98 dan F1-score 0.89, mencerminkan kemampuan model dalam mengidentifikasi ulasan positif dengan tepat.
+- Untuk kelas **Negative**, recall sebesar 0.90 menandakan model cukup mampu mendeteksi ulasan negatif, namun precision yang rendah (0.49) mengindikasikan banyak *false positive* — yaitu ulasan positif yang salah diklasifikasikan sebagai negatif. Hal ini kemungkinan disebabkan oleh **ketidakseimbangan kelas** (*class imbalance*) pada dataset (776 negatif vs 4067 positif).
+- **Weighted average F1-score sebesar 0.85** menunjukkan performa keseluruhan yang baik dengan mempertimbangkan distribusi kelas yang tidak seimbang.
+
+> ✅ **Kesimpulan:** Model BiLSTM+Attention berhasil dilatih dengan baik dan siap untuk tahap *deployment*. Model diekspor dalam format `.pt` (PyTorch checkpoint).
+
 ---
  
 ## 🔗 Link Demo & Deployment
