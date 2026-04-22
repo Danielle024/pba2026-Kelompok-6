@@ -98,7 +98,8 @@ Model LightGBM terbaik telah berhasil di-*deploy* menjadi aplikasi web interakti
  
 | Model | Platform | Link |
 |-------|----------|------|
-| **Sentimen Model (ML)** | Hugging Face Spaces | [🎮 Coba Demo AI di Sini! (Bitlancka/GameSteam-Review-Sentiment)](https://huggingface.co/spaces/Bitlancka/GameSteam-Review-Sentiment)|
+| **Sentimen Model (ML - LightGBM)** | Hugging Face Spaces | [🎮 Coba Demo ML (GameSteam-Review-Sentiment)](https://huggingface.co/spaces/Bitlancka/GameSteam-Review-Sentiment) |
+| **Sentimen Model (DL - BiLSTM + Attention)** | Hugging Face Spaces | [🤖 Coba Demo DL (Sentimen-SteamReview-NLPxDeeplearning)](https://huggingface.co/spaces/Bitlancka/Sentimen-SteamReview-NLPxDeeplearning) |
 
 ---
 *Beberapa bantuan asisten dari AI Gemini dan Copilot:* 🔗 [Folder Dokumentasi AI (Google Drive)](https://drive.google.com/drive/folders/1kwjQTFWiDKAUz9QmkHJgf3FlqjfmkJXK?usp=sharing)
